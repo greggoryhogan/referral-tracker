@@ -46,7 +46,7 @@ function referral_tracker_options_page() { ?>
             <input type="text" id="cookie_expiration" name="cookie_expiration" value="<?php echo get_option('cookie_expiration'); ?>" />
 
             <p><strong>Class for Buttons:</strong><br>
-            <em>Specify the class for your buttons in your stylesheet</em><br>
+            <em>Specify the class for buttons in your stylesheet</em><br>
             <input type="text" id="button_class" name="button_class" value="<?php echo get_option('button_class'); ?>" />
             
             <?php submit_button(); ?>
