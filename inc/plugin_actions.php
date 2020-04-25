@@ -38,7 +38,12 @@ function referral_link( $atts ){
 
     $referral_link = str_replace('|*referral*|',$referral_id,$link);
     
-    $output = '<a href="'.$referral_link.'" target="'.$target.'" class="'.$type.'">'.$text.'</a>';
+    $class = 'referral-link';
+    if($type == 'button') {
+        $class .= ' ' . get_option('button_class');
+    }
+
+    $output = '<a href="'.$referral_link.'" target="'.$target.'" class="'.$class.'">'.$text.'</a>';
 
 	return $output;
 }

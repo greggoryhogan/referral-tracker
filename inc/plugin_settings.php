@@ -13,6 +13,9 @@ function referral_plugin_register_settings() {
     //cookie expiration in seconds
     add_option( 'cookie_expiration', '864000');
     register_setting( 'referral_plugin_settings', 'cookie_expiration' );
+    //class for buttons
+    add_option( 'button_class', 'btn');
+    register_setting( 'referral_plugin_settings', 'button_class' );
 }
 add_action( 'admin_init', 'referral_plugin_register_settings' );
 
@@ -41,6 +44,10 @@ function referral_tracker_options_page() { ?>
             <p><strong>Cookie Expiration:</strong><br>
             <em>Expiration in seconds. 864000 = 10 days = 10 * 24 * 60 *60</em><br>
             <input type="text" id="cookie_expiration" name="cookie_expiration" value="<?php echo get_option('cookie_expiration'); ?>" />
+
+            <p><strong>Class for Buttons:</strong><br>
+            <em>Specify the class for your buttons in your stylesheet</em><br>
+            <input type="text" id="button_class" name="button_class" value="<?php echo get_option('button_class'); ?>" />
             
             <?php submit_button(); ?>
         </form>
