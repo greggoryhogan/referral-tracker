@@ -59,6 +59,10 @@ function referral_tracker_options_page() { ?>
         Text: Text for your link or button<br>
         Type: 'text','button' or 'inline'. An inline referral link will remove the link wrapper and just output the appropriate text. To use as a button, make sure the button class in the settings matches your theme.<br>
         Target: _blank, _parent, _self, _top</p> 
+
+        <code>[referrer_text]</code>
+        <p><strong>This shortcode has not options</strong><br>
+        It will show the current referrer ID on the page</p> 
          
     </div>
 <?php

@@ -26,15 +26,7 @@ function referral_link( $atts ){
 		$atts
 	) );
 
-    $variable = get_option('referral_variable');
-    if (!empty($_GET[$variable])) {
-        $referral_id = $_GET[$variable];
-    }  
-    else if(isset($_COOKIE['referral-tracker'])){
-        $referral_id = $_COOKIE['referral-tracker'];
-    } else{
-        $referral_id = get_option('default_referral_id');
-    }
+    $referral_id = get_referral_id();
 
     $referral_link = str_replace('|*referral*|',$referral_id,$link);
     
@@ -49,5 +41,23 @@ function referral_link( $atts ){
     } else {
         return $referral_link;
     }
+}
+
+add_shortcode( 'referrer_text', 'referrer_text' );
+function referrer_text( $atts ){
+    return get_referral_id();
+}
+
+function get_referral_id() {
+    $variable = get_option('referral_variable');
+    if (!empty($_GET[$variable])) {
+        $referral_id = $_GET[$variable];
+    }  
+    else if(isset($_COOKIE['referral-tracker'])){
+        $referral_id = $_COOKIE['referral-tracker'];
+    } else{
+        $referral_id = get_option('default_referral_id');
+    }
+    return $referral_id;
 }
 ?>
