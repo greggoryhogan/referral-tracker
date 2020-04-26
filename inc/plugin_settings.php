@@ -5,7 +5,7 @@
 
 function referral_plugin_register_settings() {
     //what variable to check for
-    add_option( 'referral_variable', 'referral');
+    add_option( 'referral_variable', 'ref');
     register_setting( 'referral_plugin_settings', 'referral_variable' );
     //default id if there isnt a variable set
     add_option( 'default_referral_id', 'followterry');
@@ -57,12 +57,12 @@ function referral_tracker_options_page() { ?>
         <p><strong>Options:</strong><br>
         Link: Use any link and use the placeholder |*referral*| where you want the referral to be replaced.<br>
         Text: Text for your link or button<br>
-        Type: 'text','button' or 'inline'. An inline referral link will remove the link wrapper and just output the appropriate text. To use as a button, make sure the button class in the settings matches your theme.<br>
+        Type: 'text', 'button' or 'inline'. An inline referral link will remove the link wrapper and just output the appropriate text. To use as a button, make sure the button class in the settings matches your theme.<br>
         Target: _blank, _parent, _self, _top</p> 
 
         <code>[referrer_text]</code>
         <p><strong>This shortcode has not options</strong><br>
-        It will show the current referrer ID on the page</p> 
+        It will show the current set referrer on the page, pulled from either the $_GET, $_COOKIE, or Default value</p> 
          
     </div>
 <?php

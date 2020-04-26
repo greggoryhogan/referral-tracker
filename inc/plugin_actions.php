@@ -1,5 +1,11 @@
 <?php 
 /*
+ *
+ * Functions related to frontend capture and output of referral tracking
+ * 
+ */
+
+/*
  * Check if there is a referral variable in the url and if so then se save it to a cookie
  */
 function check_for_referrer() {
@@ -10,6 +16,22 @@ function check_for_referrer() {
     }
 }
 add_action('init', 'check_for_referrer');
+
+/*
+ * Get the referrer code whether it be from the url, cookie, or default settings
+ */
+function get_referral_id() {
+    $variable = get_option('referral_variable');
+    if (!empty($_GET[$variable])) {
+        $referral_id = $_GET[$variable];
+    }  
+    else if(isset($_COOKIE['referral-tracker'])){
+        $referral_id = $_COOKIE['referral-tracker'];
+    } else{
+        $referral_id = get_option('default_referral_id');
+    }
+    return $referral_id;
+}
 
 /*
  * Shortcode to output the referral link
@@ -43,21 +65,11 @@ function referral_link( $atts ){
     }
 }
 
+/*
+ * Shortcode to show just the currently set referrer
+ */
 add_shortcode( 'referrer_text', 'referrer_text' );
 function referrer_text( $atts ){
     return get_referral_id();
-}
-
-function get_referral_id() {
-    $variable = get_option('referral_variable');
-    if (!empty($_GET[$variable])) {
-        $referral_id = $_GET[$variable];
-    }  
-    else if(isset($_COOKIE['referral-tracker'])){
-        $referral_id = $_COOKIE['referral-tracker'];
-    } else{
-        $referral_id = get_option('default_referral_id');
-    }
-    return $referral_id;
 }
 ?>
